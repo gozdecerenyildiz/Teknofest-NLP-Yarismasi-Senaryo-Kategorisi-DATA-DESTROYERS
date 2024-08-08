@@ -1,57 +1,55 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from transformers import TFBertForSequenceClassification, BertTokenizer
-import tensorflow as tf
-import stanza
-import nltk
+import joblib
+import spacy
 
-# NLTK ve Stanza için gerekli indirmeler
-nltk.download('punkt')
-stanza.download('tr')
-
-# Stanza Türkçe pipeline'ı oluşturma
-nlp = stanza.Pipeline('tr', processors='tokenize,mwt,pos,lemma,depparse,ner')
-
-# FastAPI uygulamasını başlatma
+# FastAPI uygulaması oluşturma
 app = FastAPI()
 
-# Model ve tokenizer'ı yükleyin
-model_path = 'sentiment_model'
-model = TFBertForSequenceClassification.from_pretrained(model_path)
-tokenizer = BertTokenizer.from_pretrained(model_path)
+# Model ve vektörizeri yükleme
+model, vectorizer = joblib.load('logistic_regression_model_with_vectorizer.pkl')
 
-class Comment(BaseModel):
+# spaCy çok dilli modeli yükleme
+nlp = spacy.load('xx_ent_wiki_sm')
+
+# İstek verisini tanımlama
+class TextItem(BaseModel):
     text: str
 
-@app.post("/analyze/")
-async def analyze(comment: Comment):
-    # Sentiment Analizi
-    inputs = tokenizer(comment.text, return_tensors='tf', max_length=128, padding='max_length', truncation=True)
-    outputs = model(inputs)
-    scores = outputs[0][0].numpy()
-    sentiment = 'positive' if scores[1] > scores[0] else 'negative'
+@app.post("/predict")
+async def predict(item: TextItem):
+    # Gelen metni vektörizer ile dönüştürme
+    text_vector = vectorizer.transform([item.text])
+    # Model ile tahmin yapma
+    prediction = model.predict(text_vector)
     
-    # Entity Extraction
-    doc = nlp(comment.text)
-    entities = [ent.text for ent in doc.ents]
-    
-    # Burada her bir entity'nin sentiment analizini yapmalıyız
-    # Bu örnek basit bir yaklaşım sunar; gerçek uygulamada daha sofistike yöntemler gerekebilir.
-    entity_list = []
-    results = []
-    for ent in entities:
-        # Örnek olarak, her bir entity'nin sentimentini belirliyoruz
-        # Bu kısımda gerçek analizlerinizi gerçekleştirin
-        entity_sentiment = 'nötr'
-        if 'olumsuz' in sentiment:  # Örneğin, genel sentiment'e bağlı olarak entity'nin sentimentini belirliyoruz
-            entity_sentiment = 'olumsuz'
-        elif 'olumlu' in sentiment:
-            entity_sentiment = 'olumlu'
-        
-        entity_list.append(ent)
-        results.append({"entity": ent, "sentiment": entity_sentiment})
+    # Tüm metin için sentiment tahmini yapma
+    sentiment = "olumlu" if prediction[0] == 0 else "olumsuz" if prediction[0] == 1 else "nötr"
 
-    return {
+    # Entity çıkarma
+    doc = nlp(item.text)
+    entities = [(ent.text, ent.label_) for ent in doc.ents]
+    
+    # Sonuçları oluşturma
+    results = []
+    entity_list = []
+    for ent_text, ent_label in entities:
+        if ent_text not in entity_list:
+            entity_list.append(ent_text)
+        results.append({
+            "entity": ent_text,
+            "sentiment": sentiment
+        })
+
+    # Sonuç formatı
+    result = {
         "entity_list": entity_list,
         "results": results
     }
+    
+    return result
+
+# Hızlı test için kök endpointi
+@app.get("/")
+def read_root():
+    return {"message": "Teknofest 2024, Türkçe Doğal Dil İşleme Yarışması-Senaryo Kategorisine Hoşgeldiniz!"}
