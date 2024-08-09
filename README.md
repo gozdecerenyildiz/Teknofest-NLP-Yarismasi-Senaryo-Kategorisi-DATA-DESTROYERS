@@ -1,6 +1,10 @@
 # #Teknofest2024 Türkçe Doğal Dil İşleme Yarışması   -Senaryo Kategorisi-  Takım: DATA DESTROYERS
 **Takım Adı:** DATA DESTROYERS  
 **Başvuru Id:** 2290170  
+![image](https://github.com/user-attachments/assets/4505e9fa-d976-4fc8-8405-8e172ee0211d)
+
+## Ekibimiz
+![image](https://github.com/user-attachments/assets/6f053871-50cf-468c-bce0-4f456586f187)
 
 ## 📜 Projenin Tanımı
 Bu FastAPI projesi, Teknofest2024 Türkçe Doğal Dil İşleme Yarışması Senaryo Kategorisi için Data Destroyers Ekibi tarafından, Turkcell final senaryosu kapsamında; belirli bir metin girdisine dayalı olarak varlık (entity) tanıma ve duygu (sentiment) analizi yapan bir API hizmeti sunmak amacıyla yapılmıştır. Yapmış olduğumuz bu proje, kullanıcıdan bir metin alır, bu metin üzerinde analiz yapar ve belirli varlıkları tanıyarak her bir varlık için duygu analizini gerçekleştirir.
@@ -75,18 +79,18 @@ train_dataset = dataset['train']
   
 ### D) Doğal Dil İşleme Süreci Adımları 
 #### 1. Kullanılan Kütüphaneler
-- pandas: CSV dosyasını okumak ve veri işlemek için kullanılır.
-- matplotlib: Grafik çizimleri yapmak için kullanılır.
-- sklearn: Performans metriklerini hesaplamak için kullanılır.
-- wordcloud: Metin verilerini görselleştirmek için kullanılır. Kelime bulutu (word cloud) oluşturma amaçlıdır.
-- sklearn.model_selection.train_test_split: Verileri eğitim ve test setlerine ayırmak için kullanılır. Model doğruluğunu değerlendirmek için gereklidir.
-- sklearn.feature_extraction.text.CountVectorizer: Metin verilerini sayısal verilere dönüştürmek için kullanılır. Bu dönüşüm, tokenization ve sayma işlemiyle yapılır.
-- sklearn.linear_model.LogisticRegression: Lojistik regresyon modeli oluşturmak için kullanılır. Bu model, sınıflandırma problemleri için yaygın olarak kullanılır.
-- sklearn.metrics: Model performansını değerlendirmek için çeşitli metrikler sağlar, örneğin doğruluk, hassasiyet, kesinlik, F1 skoru gibi.
-- seaborn: Veri görselleştirme için kullanılır ve özellikle istatistiksel grafikler oluşturmak için uygundur.
-- sklearn.naive_bayes: Naive Bayes sınıflandırıcı modelleri oluşturmak için kullanılır.
-- sklearn.feature_extraction.text.TfidfVectorizer: Metin verilerini sayısal verilere dönüştürmek için kullanılır. Term Frequency-Inverse Document Frequency (TF-IDF) yöntemini kullanır.
-- joblib: Modeli seri hale getirmek (serialize) ve kaydetmek için kullanılır. Eğitilen modellerin yeniden kullanılabilir hale getirilmesini sağlar.
+- **pandas:** CSV dosyasını okumak ve veri işlemek için kullanılır.
+- **matplotlib:** Grafik çizimleri yapmak için kullanılır.
+- **sklearn:** Performans metriklerini hesaplamak için kullanılır.
+- **wordcloud:** Metin verilerini görselleştirmek için kullanılır. Kelime bulutu (word cloud) oluşturma amaçlıdır.
+- **sklearn.model_selection.train_test_split:** Verileri eğitim ve test setlerine ayırmak için kullanılır. Model doğruluğunu değerlendirmek için gereklidir.
+- **sklearn.feature_extraction.text.CountVectorizer:** Metin verilerini sayısal verilere dönüştürmek için kullanılır. Bu dönüşüm, tokenization ve sayma işlemiyle yapılır.
+- **sklearn.linear_model.LogisticRegression:** Lojistik regresyon modeli oluşturmak için kullanılır. Bu model, sınıflandırma problemleri için yaygın olarak kullanılır.
+- **sklearn.metrics:** Model performansını değerlendirmek için çeşitli metrikler sağlar, örneğin doğruluk, hassasiyet, kesinlik, F1 skoru gibi.
+- **seaborn:** Veri görselleştirme için kullanılır ve özellikle istatistiksel grafikler oluşturmak için uygundur.
+- **sklearn.naive_bayes:** Naive Bayes sınıflandırıcı modelleri oluşturmak için kullanılır.
+- **sklearn.feature_extraction.text.TfidfVectorizer:** Metin verilerini sayısal verilere dönüştürmek için kullanılır. Term Frequency-Inverse Document Frequency (TF-IDF) yöntemini kullanır.
+- **joblib:** Modeli seri hale getirmek (serialize) ve kaydetmek için kullanılır. Eğitilen modellerin yeniden kullanılabilir hale getirilmesini sağlar.
   
 #### 2. Veriyi Okuma
 - Pandas kütüphanesi, ön temizleme yapılmış verilerin CSV dosyasından yüklenmesi için kullanıldı.
@@ -139,21 +143,21 @@ Bu iki teknik, metin verilerinin makine öğrenimi modelleri için uygun hale ge
 
 #### 3. Sonuçları Döndürme
 - Tanımlanan varlıklar ve bunlara ilişkin duygu analizi sonuçları (pozitif, negatif, nötr) kullanıcıya JSON formatında geri döndürülür.
+
+## F) SONUÇLAR-ARAYÜZ
 ![Ekran görüntüsü 2024-08-09 092035](https://github.com/user-attachments/assets/6dc06251-728c-452d-a23b-afe52312988f)
 ![Ekran görüntüsü 2024-08-09 092041](https://github.com/user-attachments/assets/8ca8d80b-3dab-479d-80ca-d124859b75f3)
 ![Ekran görüntüsü 2024-08-09 092111](https://github.com/user-attachments/assets/f025e7f2-ffd9-4ca6-938a-0c50e142c67e)
 ![Ekran görüntüsü 2024-08-09 092623](https://github.com/user-attachments/assets/e2c4f594-51e9-40d7-a211-a023246ef91a)
 ![Ekran görüntüsü 2024-08-09 093512](https://github.com/user-attachments/assets/8f751805-0fe2-4f2a-9208-5536c8a72893)
 ![Ekran görüntüsü 2024-08-09 093528](https://github.com/user-attachments/assets/6a7ea041-1ead-47c8-829c-fd996a82a6cb)
-![Ekran görüntüsü 2024-08-08 165356](https://github.com/user-attachments/assets/86291847-7e03-457e-801d-fc10434991ba)
 ![Ekran görüntüsü 2024-08-09 091910](https://github.com/user-attachments/assets/ea5a2bc7-7ac3-4ed0-af99-10074cadfd8a)
 ![Ekran görüntüsü 2024-08-09 091921](https://github.com/user-attachments/assets/02b5a838-f74c-440f-b681-b72c91d1f3e9)
 ![Ekran görüntüsü 2024-08-09 091941](https://github.com/user-attachments/assets/2307e3f8-2f22-47f6-8e62-0b95ee3cda66)
 ![Ekran görüntüsü 2024-08-09 091949](https://github.com/user-attachments/assets/dfc7c2cc-b75c-4e4b-bc73-d02de8e5aee1)
 
 
-
-## F) 🔧 Kurulum
+## G) 🔧 Kurulum
 
 1. Projeyi klonlayın:
 
