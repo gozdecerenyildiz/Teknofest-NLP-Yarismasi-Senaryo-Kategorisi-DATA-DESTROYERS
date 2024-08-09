@@ -23,13 +23,13 @@ Bu FastAPI projesi, Teknofest2024 Türkçe Doğal Dil İşleme Yarışması Sena
 - Bu proje, varlık tanıma (NER) ve duygu analizi (sentiment analysis) için bir FastAPI uygulaması sunar. Kullanıcılar API'ye bir metin gönderir ve sistem, metin içerisinde yer alan varlıkları tespit eder ve bu varlıkların duygu durumunu belirler. 
 
 - Ayrıca, bu tür projeler, Türkçe dilinde veri analizi yapma kapasitesini artırarak, Türkçe'nin dijital dünya üzerindeki kullanımını ve dil teknolojileri alanındaki temsilini güçlendirmektedir.
-- 
+  
 ## 📂 Dosyalar
 
 - `main.py`: Uygulamanın ana dosyası.
 - `requirements.txt`: Projede kullanılan Python bağımlılıklarının listesi.
--`sentiment_data.7z` : Projede kullanılan datanın son hali
--`analiz.ipynb` : Proje modelleme aşamalarının bulunduğu jupyternotebook dosyası
+- `sentiment_data.7z` : Projede kullanılan datanın son hali
+- `analiz.ipynb` : Proje modelleme aşamalarının bulunduğu jupyternotebook dosyası
 
 
 ## 📈 Proje Aşamaları
@@ -61,7 +61,7 @@ Proje 4 ana aşamadan oluşmaktadır:
 - **Sentiment sütununa sahip Türkçe yorum verilerinin (https://huggingface.co/datasets/asparius/Turkish-Product-Review) (https://huggingface.co/datasets/winvoker/turkish-sentiment-analysis-dataset) elde edilmesi:**
 
 #### 📥 Veri Setini İndirme
-1.  Hugging Face Datasets kütüphanesini kullanarak "asparius/Turkish-Product-Review" ve "turkish-sentiment-analysis-dataset" veri setinin eğitim bölümü şu kod ile indirilir:
+Hugging Face Datasets kütüphanesini kullanarak "asparius/Turkish-Product-Review" ve "turkish-sentiment-analysis-dataset" veri setinin eğitim bölümü şu kod ile indirilir:
 
 train_dataset = dataset['train']
 
@@ -69,7 +69,7 @@ train_dataset = dataset['train']
 
 
 ### C) Verilerin Ön Temizleme İşlem Adımları
-- **Web scraping ve Hugging Face Datasets ile elde edilen tüm verilerin ön temizleme işlemleri:**
+ **Web scraping ve Hugging Face Datasets ile elde edilen tüm verilerin ön temizleme işlemleri:**
 
 - Sayıları kaldırma,
 - Fazla boşlukları kaldırma,
