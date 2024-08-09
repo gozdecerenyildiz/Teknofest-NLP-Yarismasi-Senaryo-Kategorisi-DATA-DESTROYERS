@@ -98,7 +98,6 @@ train_dataset = dataset['train']
 - **sklearn.metrics:** Model performansını değerlendirmek için çeşitli metrikler sağlar, örneğin doğruluk, hassasiyet, kesinlik, F1 skoru gibi.
 - **seaborn:** Veri görselleştirme için kullanılır ve özellikle istatistiksel grafikler oluşturmak için uygundur.
 - **sklearn.naive_bayes:** Naive Bayes sınıflandırıcı modelleri oluşturmak için kullanılır.
-- **sklearn.feature_extraction.text.TfidfVectorizer:** Metin verilerini sayısal verilere dönüştürmek için kullanılır. Term Frequency-Inverse Document Frequency (TF-IDF) yöntemini kullanır.
 - **joblib:** Modeli seri hale getirmek (serialize) ve kaydetmek için kullanılır. Eğitilen modellerin yeniden kullanılabilir hale getirilmesini sağlar.
   
 #### 2. Veriyi Okuma
@@ -108,15 +107,12 @@ train_dataset = dataset['train']
 - Modelin anlayabileceği bir formatta metin verileri ve etiketler hazırlandı. astype(str) ve astype(int) ile tip dönüşümleri yapılarak veriler listelere dönüştürüldü.
 
 #### 4. Vektörizasyon Teknikleri
-- Bu projede vektörizasyon işlemi CountVectorizer ve TfidfVectorizer kullanılarak gerçekleştirilmiştir:
+- Bu projede vektörizasyon işlemi CountVectorizer kullanılarak gerçekleştirilmiştir:
 
 **CountVectorizer:** Metin içerisindeki her kelimeyi bir token olarak alır ve bu kelimelerin dokümandaki sayısını hesaplar. Bu yöntem, metni kelime sayılarıyla temsil eden bir matrise dönüştürür.
 - 1-Gram: Her bir kelime için vektörler oluşturulmuştur.
 - 2-Gram: 1 ve 2 kelimelik kombinasyonlar için vektörler oluşturulmuştur (N-Gram yöntemi).
-**TfidfVectorizer:*** CountVectorizer'a benzer şekilde metni kelime tokenlerine ayırır, ancak bu kelimelerin önemini de dikkate alır. TF-IDF skoru, bir kelimenin bir dokümandaki önemini hesaplamak için kullanılır. Daha sık geçen ancak çok yaygın olmayan kelimelere daha yüksek ağırlık verilir.
-- 1-Gram TF-IDF: Tek kelimelik tokenlar için TF-IDF vektörleri oluşturulmuştur.
-- 2-Gram TF-IDF: 1 ve 2 kelimelik kombinasyonlar için TF-IDF vektörleri oluşturulmuştur.
-Bu iki teknik, metin verilerinin makine öğrenimi modelleri için uygun hale getirilmesini sağlar. Tokenization, kelime öbeklerini **(n-grams)** de hesaba katarak, daha anlamlı bir metin temsili oluşturulur.
+Bu teknik, metin verilerinin makine öğrenimi modelleri için uygun hale getirilmesini sağlar. Tokenization, kelime öbeklerini **(n-grams)** de hesaba katarak, daha anlamlı bir metin temsili oluşturulur.
 
 #### 5.Model Kurulumu ve Eğitimi
 **Logistic Regression:**
