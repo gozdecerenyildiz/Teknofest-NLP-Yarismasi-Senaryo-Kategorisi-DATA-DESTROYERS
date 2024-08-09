@@ -1,4 +1,4 @@
-# #Teknofest2024 Türkçe Doğal Dil İşleme Yarışması   -Senaryo Kategorisi-  Takım: DATA DESTROYERS
+# Teknofest2024 Türkçe Doğal Dil İşleme Yarışması   -Senaryo Kategorisi-  Takım: DATA DESTROYERS
 **Takım Adı:** DATA DESTROYERS  
 **Başvuru Id:** 2290170  
 ![image](https://github.com/user-attachments/assets/4505e9fa-d976-4fc8-8405-8e172ee0211d)
@@ -9,20 +9,26 @@
 ## 📜 Projenin Tanımı
 Bu FastAPI projesi, Teknofest2024 Türkçe Doğal Dil İşleme Yarışması Senaryo Kategorisi için Data Destroyers Ekibi tarafından, Turkcell final senaryosu kapsamında; belirli bir metin girdisine dayalı olarak varlık (entity) tanıma ve duygu (sentiment) analizi yapan bir API hizmeti sunmak amacıyla yapılmıştır. Yapmış olduğumuz bu proje, kullanıcıdan bir metin alır, bu metin üzerinde analiz yapar ve belirli varlıkları tanıyarak her bir varlık için duygu analizini gerçekleştirir.
 Özellikle sosyal medya, müşteri geri bildirimleri veya herhangi bir metin tabanlı veri kaynağındaki varlıkların (şirket isimleri, ürünler, hizmetler vb.) tespit edilmesi ve bu varlıklarla ilgili olumlu, olumsuz veya nötr duyguların sınıflandırılması hedeflenmektedir.
-![Ekran görüntüsü 2024-04-29 173930](https://github.com/user-attachments/assets/cbe0043d-f0ca-4d7d-85b3-fbaa15a96f51)
-
 
 ## 🎯 Projenin Amacı
 - **Varlık Tanıma (Entity Recognition):** Metin içerisindeki belirli kişi, yer, organizasyon vb. varlıkları tanımlamak.
 - **Duygu Analizi (Sentiment Analysis):** Tanımlanan her bir varlık için metindeki duygusal tonu (olumlu, olumsuz, nötr) belirlemek.
 
+## 🚀 Projemizin Sağladığı Çözümler
+- Kullanıcıların metinlerinde yer alan varlıkların (entitelerin) doğru bir şekilde tanınması.Tanınan her varlık için duygu analizi yapılarak, varlığın taşıdığı duygunun belirlenmesi (olumlu, olumsuz, nötr).
+
+- Proje FastAPI framework'ü kullanılarak bir API olarak sunulmaktadır. Bu API'ye gönderilen metinler üzerinde varlık tanıma ve duygu analizi gerçekleştirilir ve sonuçlar JSON formatında döndürülür.
+
+- Bu proje, varlık tanıma (NER) ve duygu analizi (sentiment analysis) için bir FastAPI uygulaması sunar. Kullanıcılar API'ye bir metin gönderir ve sistem, metin içerisinde yer alan varlıkları tespit eder ve bu varlıkların duygu durumunu belirler. 
+
+- Ayrıca, bu tür projeler, Türkçe dilinde veri analizi yapma kapasitesini artırarak, Türkçe'nin dijital dünya üzerindeki kullanımını ve dil teknolojileri alanındaki temsilini güçlendirmektedir.
+- 
 ## 📂 Dosyalar
 
 - `main.py`: Uygulamanın ana dosyası.
 - `requirements.txt`: Projede kullanılan Python bağımlılıklarının listesi.
--
--
--
+-`sentiment_data.7z` : Projede kullanılan datanın son hali
+-`analiz.ipynb` : Proje modelleme aşamalarının bulunduğu jupyternotebook dosyası
 
 
 ## 📈 Proje Aşamaları
@@ -53,7 +59,7 @@ Proje 4 ana aşamadan oluşmaktadır:
 ### B) HuggingFace ile Veri Toplama
 - **Sentiment sütununa sahip Türkçe yorum verilerinin (https://huggingface.co/datasets/asparius/Turkish-Product-Review) (https://huggingface.co/datasets/winvoker/turkish-sentiment-analysis-dataset) elde edilmesi:**
 
-#### Veri Setini İndirme
+#### 📥 Veri Setini İndirme
 1.  Hugging Face Datasets kütüphanesini kullanarak "asparius/Turkish-Product-Review" ve "turkish-sentiment-analysis-dataset" veri setinin eğitim bölümü şu kod ile indirilir:
 
 train_dataset = dataset['train']
@@ -109,19 +115,19 @@ train_dataset = dataset['train']
 - 2-Gram TF-IDF: 1 ve 2 kelimelik kombinasyonlar için TF-IDF vektörleri oluşturulmuştur.
 Bu iki teknik, metin verilerinin makine öğrenimi modelleri için uygun hale getirilmesini sağlar. Tokenization, kelime öbeklerini **(n-grams)** de hesaba katarak, daha anlamlı bir metin temsili oluşturulur.
 
-### 5.Model Kurulumu ve Eğitimi
-## Logistic Regression: 
+#### 5.Model Kurulumu ve Eğitimi
+**Logistic Regression:**
 * LogisticRegression modeli kullanılarak sınıflandırma modeli oluşturulmuş ve eğitim verileri ile eğitilmiştir.
 * Hem kelime bazlı vektörlerle (CountVectorizer kullanarak) hem de N-Gram vektörleriyle (N-Gram CountVectorizer) modeller eğitilmiştir.
 * Ayrıca, TF-IDF vektörleri ile Logistic Regression modelleri de oluşturulmuştur.
-## Naive Bayes:
+**Naive Bayes:**
 * MultinomialNB ve BernoulliNB algoritmaları kullanılarak Naive Bayes modelleri eğitilmiştir.
 * Bu modeller, hem kelime vektörleri hem de N-Gram vektörleri ile eğitilmiş ve test edilmiştir.
-### 6.Model Performans Değerlendirmesi
+#### 6.Model Performans Değerlendirmesi
 * Karışıklık Matrisi (Confusion Matrix):
 * Modellerin performansı, karışıklık matrisi kullanılarak değerlendirilmiştir. Bu matriste, modelin tahmin ettiği ve gerçek sınıflar karşılaştırılmıştır.
 * Metrikler: Doğruluk, hassasiyet, kesinlik, F1 skoru gibi metrikler hesaplanmış ve sonuçlar görselleştirilmiştir.
-### 7.Modelin Kaydedilmesi
+#### 7.Modelin Kaydedilmesi
 * Eğitilen modeller, ileride kullanılmak üzere joblib kütüphanesi ile kaydedilmiştir. Ayrıca, vektörizasyon işlemleri için kullanılan CountVectorizer da kaydedilmiştir.
 * Model ve vektörizer birlikte kaydedilerek, tahmin işlemleri için tekrar kullanılabilir hale getirilmiştir.
 * Bu adımlar, metin verileri üzerinde gerçekleştirilen sınıflandırma işleminin tam iş akışını ve kullanılan yöntemleri kapsamaktadır.
@@ -135,16 +141,16 @@ Bu iki teknik, metin verilerinin makine öğrenimi modelleri için uygun hale ge
 ![image](https://github.com/user-attachments/assets/be0e968b-0b1a-40dc-bcc5-cacbc3843510)
 
 ### E) 🖥 FastAPI (main.py) İşleyişi
-#### 1. Metin Girdisi Alma
+#### 📜 1. Metin Girdisi Alma
 - Kullanıcı, bir metin girdisi gönderir. Bu metin, içinde çeşitli varlıklar (örneğin, şirket isimleri, platformlar) içerebilir.
 
-#### 2. Varlık Tanıma ve Duygu Analizi
+#### 💬 2. Varlık Tanıma ve Duygu Analizi
 - Gönderilen metin üzerinde model çalıştırılarak varlıklar tanımlanır ve her bir varlık için duygu analizi yapılır.
 
-#### 3. Sonuçları Döndürme
+#### 📈 3.Sonuçları Döndürme
 - Tanımlanan varlıklar ve bunlara ilişkin duygu analizi sonuçları (pozitif, negatif, nötr) kullanıcıya JSON formatında geri döndürülür.
 
-## F) SONUÇLAR-ARAYÜZ
+### F) 📊 SONUÇLAR-ARAYÜZ
 ![Ekran görüntüsü 2024-08-09 092035](https://github.com/user-attachments/assets/6dc06251-728c-452d-a23b-afe52312988f)
 ![Ekran görüntüsü 2024-08-09 092041](https://github.com/user-attachments/assets/8ca8d80b-3dab-479d-80ca-d124859b75f3)
 ![Ekran görüntüsü 2024-08-09 092111](https://github.com/user-attachments/assets/f025e7f2-ffd9-4ca6-938a-0c50e142c67e)
@@ -157,7 +163,7 @@ Bu iki teknik, metin verilerinin makine öğrenimi modelleri için uygun hale ge
 ![Ekran görüntüsü 2024-08-09 091949](https://github.com/user-attachments/assets/dfc7c2cc-b75c-4e4b-bc73-d02de8e5aee1)
 
 
-## G) 🔧 Kurulum
+### G) 🔧 Kurulum
 
 1. Projeyi klonlayın:
 
@@ -180,18 +186,18 @@ Bu iki teknik, metin verilerinin makine öğrenimi modelleri için uygun hale ge
 4. Uygulamayı başlatın:
 
     ```bash
-    uvicorn main:app --reload
+    python -m uvicorn main:app --reload
     ```
 
 5. Tarayıcınızda `http://localhost:8000` adresine gidin ve uygulamayı kullanmaya başlayın.
 
-## 👥 İletişim
+### 👥 İletişim
 
 - LinkedIn: [Berke Sevim](https://www.linkedin.com/in/berke-sevim-1565161a2/)
 - LinkedIn: [Gözde Ceren Yıldız](https://www.linkedin.com/in/gözde-ceren-yıldız/)
 - LinkedIn: [Büşra Sulukan](https://www.linkedin.com/in/büşra-sulukan-82299a177/)
 
-## 📄 Lisans
+### 📄 Lisans
 
 Bu proje Apache 2.0 Lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
