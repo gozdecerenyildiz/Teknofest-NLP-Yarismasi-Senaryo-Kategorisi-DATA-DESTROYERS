@@ -118,7 +118,6 @@ Bu teknik, metin verilerinin makine öğrenimi modelleri için uygun hale getiri
 **Logistic Regression:**
 * LogisticRegression modeli kullanılarak sınıflandırma modeli oluşturulmuş ve eğitim verileri ile eğitilmiştir.
 * Hem kelime bazlı vektörlerle (CountVectorizer kullanarak) hem de N-Gram vektörleriyle (N-Gram CountVectorizer) modeller eğitilmiştir.
-* Ayrıca, TF-IDF vektörleri ile Logistic Regression modelleri de oluşturulmuştur.
 * **Naive Bayes:**
 * MultinomialNB ve BernoulliNB algoritmaları kullanılarak Naive Bayes modelleri eğitilmiştir.
 * Bu modeller, hem kelime vektörleri hem de N-Gram vektörleri ile eğitilmiş ve test edilmiştir.
