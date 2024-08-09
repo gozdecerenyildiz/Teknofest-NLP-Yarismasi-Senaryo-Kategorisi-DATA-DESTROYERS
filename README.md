@@ -4,7 +4,8 @@
 ![image](https://github.com/user-attachments/assets/4505e9fa-d976-4fc8-8405-8e172ee0211d)
 
 ## Ekibimiz
-![image](https://github.com/user-attachments/assets/6f053871-50cf-468c-bce0-4f456586f187)
+![image](https://github.com/user-attachments/assets/ca0353ec-4381-4de5-bf70-723dc522c888)
+
 
 ## 📜 Projenin Tanımı
 Bu FastAPI projesi, Teknofest2024 Türkçe Doğal Dil İşleme Yarışması Senaryo Kategorisi için Data Destroyers Ekibi tarafından, Turkcell final senaryosu kapsamında; belirli bir metin girdisine dayalı olarak varlık (entity) tanıma ve duygu (sentiment) analizi yapan bir API hizmeti sunmak amacıyla yapılmıştır. Yapmış olduğumuz bu proje, kullanıcıdan bir metin alır, bu metin üzerinde analiz yapar ve belirli varlıkları tanıyarak her bir varlık için duygu analizini gerçekleştirir.
